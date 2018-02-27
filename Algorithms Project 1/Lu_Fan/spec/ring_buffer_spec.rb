@@ -25,8 +25,13 @@ describe RingBuffer do
   it "unshifts/shifts items into array" do
     arr = RingBuffer.new
 
-    5.times { |i| arr.unshift(i) }
+    5.times do |i|
+      arr.unshift(i)
+      # p arr
+      # p arr[i]
+    end
     expect(arr.length).to eq(5)
+    # p arr.length
     5.times { |i| expect(arr[i]).to eq(4 - i) }
 
     4.downto(0) do |i|
@@ -42,6 +47,7 @@ describe RingBuffer do
       arr.push(i)
       arr.unshift(i)
     end
+
 
     4.times do |i|
       expect(arr[i]).to eq(3-i)
